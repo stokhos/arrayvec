@@ -3,7 +3,7 @@ name = "arrayvec"
 version = "0.7.4"
 authors = ["bluss"]
 license = "MIT OR Apache-2.0"
-edition = "2018"
+edition = "2021"
 
 description = "A vector with fixed capacity, backed by an array (it can be stored on the stack too). Implements fixed capacity ArrayVec and ArrayString."
 documentation = "https://docs.rs/arrayvec/"
@@ -46,7 +46,15 @@ std = []
 [profile.bench]
 debug = true
 [profile.release]
-debug = true
+opt-level = 3
+debug = false
+debug-assertions = false
+incremental = false
+overflow-checks = false
+rpath = false
+lto = "fat"
+panic = "abort"
+codegen-units = 1
 
 [package.metadata.docs.rs]
 features = ["serde", "zeroize"]
